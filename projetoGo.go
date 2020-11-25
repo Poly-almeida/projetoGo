@@ -86,28 +86,28 @@ func (calc calcular) jogar(){
 		calc.dificuldade = dificuldade
 
 		if calc.dificuldade == 1{
-			calc.valor1 = rand.Intn(11)
-			calc.valor2 = rand.Intn(11)
+			calc.valor1 = rand.Intn(10)
+			calc.valor2 = rand.Intn(10)
 		} else if calc.dificuldade == 2{
-			calc.valor1 = rand.Intn(101)
-			calc.valor2 = rand.Intn(101)
+			calc.valor1 = rand.Intn(100)
+			calc.valor2 = rand.Intn(100)
 		} else if calc.dificuldade == 3{
-			calc.valor1 = rand.Intn(1001)
-			calc.valor2 = rand.Intn(1001)
+			calc.valor1 = rand.Intn(1000)
+			calc.valor2 = rand.Intn(1000)
 		} else if calc.dificuldade == 4{
-			calc.valor1 = rand.Intn(10001)
-			calc.valor2 = rand.Intn(10001)
+			calc.valor1 = rand.Intn(10000)
+			calc.valor2 = rand.Intn(10000)
 		} else{
-			calc.valor1 = rand.Intn(100001)
-			calc.valor2 = rand.Intn(100001)
+			calc.valor1 = rand.Intn(100000)
+			calc.valor2 = rand.Intn(100000)
 		}
 
-		calc.operacao = rand.Intn(3)
+		calc.operacao = rand.Intn(2)
 		var resposta int
 		fmt.Println("Informe o resultado para a seguinte operação:")
 
 		if calc.operacao == 0{
-			fmt.Println(calc.valor1, " + ", calc.valor2, " = ")
+			fmt.Print(calc.valor1, " + ", calc.valor2, " = ")
 			fmt.Scanln(&resposta)
 
 			if calc.soma(resposta) == 1{
@@ -115,23 +115,21 @@ func (calc calcular) jogar(){
 				fmt.Println("Você tem ",calc.pontos," ponto(s).")
 			}
 		} else if calc.operacao == 1{
-			fmt.Println(calc.valor1, " - ", calc.valor2, " = ")
+			fmt.Print(calc.valor1, " - ", calc.valor2, " = ")
 			fmt.Scanln(&resposta)
 
 			if calc.subtrai(resposta) == 1{
 				calc.pontos = calc.pontos + 1
 				fmt.Println("Você tem ",calc.pontos," ponto(s).")
 			}
-		} else if calc.operacao == 2{
-			fmt.Println(calc.valor1, " * ", calc.valor2, " = ")
+		} else {
+			fmt.Print(calc.valor1, " * ", calc.valor2, " = ")
 			fmt.Scanln(&resposta)
 
 			if calc.multiplica(resposta) == 1{
 				calc.pontos = calc.pontos + 1
 				fmt.Println("Você tem ",calc.pontos," ponto(s).")
 			}
-		} else {
-			fmt.Println("Essa operação não é válida")
 		}
 
 		fmt.Println("Deseja continuar jogando? (true) (false)")
