@@ -93,12 +93,13 @@ Por fim uma IDE que é paga, que ajuda na elaboração do codigo é a da jetbrai
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-No arquivo clienteTCP para execuatr com o comando =  go run -race clienteTCP.go
+Arquivo *servidorV1* do servidor, construido e funcionando OK.
 
-No arquivo serverUDO para execuatr com o comando =  go run -race serverUDP.go
+Para testar, complidor o codigo e abrir o navegador (qual navegador) e digitar a URL: http://localhost:3000/
 
-Para testar, usar o comando telnet 0.0.0.0 9999
-
-OBS: Para verificar as conexões ativas usar o comando = netstat -anp TCP
+O resultado esperado será aberto uma pagina, com o texto: 
+Teste de servidor = em formato de tamanho H1
+Teste OK = tamanho normal
+Criacao do servidor OK = tamnho H2
 
 
