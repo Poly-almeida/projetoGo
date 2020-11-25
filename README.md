@@ -98,9 +98,9 @@ Arquivo *servidorV1* do servidor, construido e funcionando OK.
 Para testar, *complidor o codigo e abrir o navegador (qual navegador) e digitar a URL: http://localhost:3000/
 
 O resultado esperado será aberto uma pagina, com o texto: 
-Teste de servidor = em formato de tamanho H1
-Teste OK = tamanho normal
-Criacao do servidor OK = tamnho H2
+Teste de servidor = em formato de tamanho H1 (formato HTML)
+Teste OK = tamanho normal (formato HTML)
+Criacao do servidor OK = tamanho H2 (formato HTML)
 
 *Resultado da copilação esperada: 
 command-line-arguments
