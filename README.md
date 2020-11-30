@@ -133,16 +133,16 @@ Quais as vantagens e desvantagens de usar um servidor?
 
 *Vantagens de usar um servidor
 
-    os custos de licenciamento de software são reduzidos, já que não é necessário adquirir um para cada computador. Para grandes empresas, que operam com mais de 100    máquinas, pode ser um custo considerável;
-    as despesas com infraestrutura também podem ser reduzidas, já que algumas aplicações podem migrar para o servidor, seja ele físico, seja em nuvem, em vez de rodar nas máquinas, evitando computadores com recursos mais robustos;
-    aumento da segurança interna, já que os protocolos serão utilizados no servidor, e não nas pessoas usuárias. Assim, é possível centralizar as ações de segurança de dados. Além disso, é mais fácil implementar controles de acesso nos servidores, outra medida fundamental de proteção;
-    portabilidade: a migração dos conteúdos, bem como a realização de backups, se torna mais prática, pois todas as informações estão centralizadas em um mesmo lugar;
-    outsourcing de TI facilitado: com isso, é possível conseguir uma terceirização de serviço de fato eficiente, permitindo uma maior eficiência nas atividades realizadas por uma empresa externa.
+    ->os custos de licenciamento de software são reduzidos, já que não é necessário adquirir um para cada computador. Para grandes empresas, que operam com mais de 100    máquinas, pode ser um custo considerável;
+    ->as despesas com infraestrutura também podem ser reduzidas, já que algumas aplicações podem migrar para o servidor, seja ele físico, seja em nuvem, em vez de rodar nas máquinas, evitando computadores com recursos mais robustos;
+    ->aumento da segurança interna, já que os protocolos serão utilizados no servidor, e não nas pessoas usuárias. Assim, é possível centralizar as ações de segurança de dados. Além disso, é mais fácil implementar controles de acesso nos servidores, outra medida fundamental de proteção;
+    ->portabilidade: a migração dos conteúdos, bem como a realização de backups, se torna mais prática, pois todas as informações estão centralizadas em um mesmo lugar;
+    ->outsourcing de TI facilitado: com isso, é possível conseguir uma terceirização de serviço de fato eficiente, permitindo uma maior eficiência nas atividades realizadas por uma empresa externa.
     
 *Desvantagens de usar um servidor
 
-    custo desnecessário para empresas pequenas: para aquelas que operam com poucas pessoas usuárias, a aquisição de um servidor pode ser supérflua;
-    se há uma dependência das aplicações no uso interno da empresa, caso ele passe por manutenção, a solução parará de rodar e seu negócio não poderá utilizá-lo, paralisando as atividades internas;
-    uma falha de segurança que afete os servidores pode afetar todas as máquinas da empresa.
+    ->custo desnecessário para empresas pequenas: para aquelas que operam com poucas pessoas usuárias, a aquisição de um servidor pode ser supérflua;
+    ->se há uma dependência das aplicações no uso interno da empresa, caso ele passe por manutenção, a solução parará de rodar e seu negócio não poderá utilizá-lo, paralisando as atividades internas;
+    ->uma falha de segurança que afete os servidores pode afetar todas as máquinas da empresa.
     
 ---------------------------------------
