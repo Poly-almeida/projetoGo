@@ -105,3 +105,25 @@ Criacao do servidor OK = tamanho H2 (formato HTML)
 *Resultado da copilação esperada: 
 command-line-arguments
 Start servidor...
+---------------------------------------
+Entendo o codigo:
+
+A primeira função é a index, onde temos 2 chamadas a http.ResponseWriter e a http.Request, que utilizamos na criação da pagina da web como tese usando o comando "fmt.Fprintf" para colocar texto na pagina da web, como teste.
+
+A função check e composta de 2 chamadas a http.ResponseWriter que envia dados ao cliente HTTP.
+   
+    Nesta, função usamos a comando "fmt.PprintF", para teste do titulo do site
+
+E a chamada http.Request que é uma estrutura de dados que representa uma solicitação HTTP do cliente.
+
+A função main, tem as seguintes chamadas o comando http.HandleFunc passa para p pacote net.http que é especifico para lidar as solicitações de arquivo http, que funciona como servidor de web.
+
+    Dentro de comando, temos uma checagem, que poderá ser testada em uma pagina de web, dessa forma, temos 2 chamadas para teste.
+    
+Tambpem temos 1 comando fmt.PprintF, para demostar o incio do funcionamento do servidor.
+
+E por último dentro da função main, demos o comando http.ListenAndServe que diz ao servidor para escutar no endereço especificado da rede TCP: 3000. 
+ 
+     Esta comadndo fica ridando até que o programa seja encerrado.
+
+
