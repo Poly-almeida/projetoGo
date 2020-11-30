@@ -93,38 +93,14 @@ Por fim uma IDE que é paga, que ajuda na elaboração do codigo é a da jetbrai
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-Arquivo *servidorV1* do servidor, construido e funcionando OK.
+Para testar os codigos do servidor e cliente, 1º roda o codigo do servidorV2.go [ go run servidorV2go ] e depois roda em outra instancia do compilador (abre um CMD para o servidor e outro para o cliente), para roda o codigo do cliente [ go run clienteV1.go ].
 
-Para testar, *complidor o codigo e abrir o navegador (qual navegador) e digitar a URL: http://localhost:3000/
+    OBS: 1º compilar ou rodar o codigo do servidor e depois do cliente
 
-O resultado esperado será aberto uma pagina, com o texto: 
-Teste de servidor = em formato de tamanho H1 (formato HTML)
-Teste OK = tamanho normal (formato HTML)
-Criacao do servidor OK = tamanho H2 (formato HTML)
-
-*Resultado da copilação esperada: 
-command-line-arguments
-Start servidor...
 ---------------------------------------
 Entendo o codigo:
 
-A primeira função é a index, onde temos 2 chamadas a http.ResponseWriter e a http.Request, que utilizamos na criação da pagina da web como tese usando o comando "fmt.Fprintf" para colocar texto na pagina da web, como teste.
-
-A função check e composta de 2 chamadas a http.ResponseWriter que envia dados ao cliente HTTP.
-   
-    Nesta, função usamos a comando "fmt.PprintF", para teste do titulo do site
-
-E a chamada http.Request que é uma estrutura de dados que representa uma solicitação HTTP do cliente.
-
-A função main, tem as seguintes chamadas o comando http.HandleFunc passa para p pacote net.http que é especifico para lidar as solicitações de arquivo http, que funciona como servidor de web.
-
-    Dentro de comando, temos uma checagem, que poderá ser testada em uma pagina de web, dessa forma, temos 2 chamadas para teste.
-    
-Tambpem temos 1 comando fmt.PprintF, para demostar o incio do funcionamento do servidor.
-
-E por último dentro da função main, demos o comando http.ListenAndServe que diz ao servidor para escutar no endereço especificado da rede TCP: 3000. 
- 
-     Esta comadndo fica ridando até que o programa seja encerrado.
+A colocar as fenições do codigo do cliente e servidor
 
 ------------------------
 * Informações pesquisadas no site <https://blog.betrybe.com/tecnologia/o-que-e-servidor/> acessado no dia 30/11.
