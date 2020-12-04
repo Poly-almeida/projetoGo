@@ -72,9 +72,8 @@ func (calc calcular) multiplica(resposta int) int{
 }
 // Método principal do jogo
 func (calc calcular) jogar(){
-	var continua bool = true
 
-	for continua == true{
+	for true{
 		cmd := exec.Command("cmd", "/c", "cls") // comando para limpar a tela no windows
         cmd.Stdout = os.Stdout
 		cmd.Run()
@@ -88,6 +87,7 @@ func (calc calcular) jogar(){
 		fmt.Println("Informe o resultado para a seguinte operação:")
 
 		if calc.operacao == 0{ //Se o número gerado em calc.operacao for 0, uma soma arbtrária é mostrada na tela
+			fmt.Println("Você tem ",calc.pontos," ponto(s).")
 			fmt.Print(calc.valor1, " + ", calc.valor2, " = ")
 			fmt.Scanln(&resposta)
 
@@ -96,6 +96,7 @@ func (calc calcular) jogar(){
 				fmt.Println("Você tem ",calc.pontos," ponto(s).")
 			}
 		} else if calc.operacao == 1{ //Se o número gerado em calc.operacao for 1, uma subtração arbtrária é mostrada na tela
+			fmt.Println("Você tem ",calc.pontos," ponto(s).")
 			fmt.Print(calc.valor1, " - ", calc.valor2, " = ")
 			fmt.Scanln(&resposta)
 
@@ -104,6 +105,7 @@ func (calc calcular) jogar(){
 				fmt.Println("Você tem ",calc.pontos," ponto(s).")
 			}
 		} else { //Se o número gerado em calc.operacao for 2, uma multiplicação arbtrária é mostrada na tela
+			fmt.Println("Você tem ",calc.pontos," ponto(s).")
 			fmt.Print(calc.valor1, " * ", calc.valor2, " = ")
 			fmt.Scanln(&resposta)
 
@@ -113,8 +115,11 @@ func (calc calcular) jogar(){
 			}
 		}
 
-		fmt.Println("Deseja continuar jogando? (true) (false)")
-		fmt.Scanln(&continua)
+		if calc.pontos == 10{
+			fmt.Println("Parabéns! Vc venceu!")
+			break
+		}
+
 	}
 }
 
