@@ -7,7 +7,6 @@ import (
 )
 // definição da estrutura do jogo
 type calcular struct{
-	dificuldade int
 	valor1 int
 	valor2 int
 	operacao int
@@ -73,7 +72,6 @@ func (calc calcular) multiplica(resposta int) int{
 }
 // Método principal do jogo
 func (calc calcular) jogar(){
-	var dificuldade int
 	var continua bool = true
 
 	for continua == true{
@@ -81,27 +79,9 @@ func (calc calcular) jogar(){
         cmd.Stdout = os.Stdout
 		cmd.Run()
 		
-		// nesse ponto o usuario informa em que dificuldade deseja receber a operação a ser resolvida
-		fmt.Println("Informe o nível de dificuldade desejado [1, 2, 3 ou 4]:")
-		fmt.Scanln(&dificuldade)
-		calc.dificuldade = dificuldade
-
-		if calc.dificuldade == 1{
-			calc.valor1 = rand.Intn(10) //Gera número de 0 a 9
-			calc.valor2 = rand.Intn(10)
-		} else if calc.dificuldade == 2{
-			calc.valor1 = rand.Intn(100) //Gera um número de 0 a 99
-			calc.valor2 = rand.Intn(100)
-		} else if calc.dificuldade == 3{
-			calc.valor1 = rand.Intn(1000) //Gera um número de 0 a 999
-			calc.valor2 = rand.Intn(1000)
-		} else if calc.dificuldade == 4{
-			calc.valor1 = rand.Intn(10000) //Gera um número de 0 a 9999
-			calc.valor2 = rand.Intn(10000)
-		} else{
-			calc.valor1 = rand.Intn(100000) //Gera um número de 0 a 99999
-			calc.valor2 = rand.Intn(100000)
-		}
+		// Nesse ponto, é gerado 2 números aleatorios
+		calc.valor1 = rand.Intn(1001) //Gera um número de 0 a 1000
+		calc.valor2 = rand.Intn(1001)
 
 		calc.operacao = rand.Intn(3) //Gera um número de 0 a 2
 		var resposta int
