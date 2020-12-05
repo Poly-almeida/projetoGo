@@ -15,16 +15,16 @@ type calcular struct{
 	pontos int
 }
 var clear map[string]func() //create a map for storing clear funcs
-
+// função reponsável por executar o comando de limpar a tela de acordo com sistema operacional
 func init() {
     clear = make(map[string]func()) //Initialize it
     clear["linux"] = func() { 
-        cmd := exec.Command("clear") //Linux example, its tested
+        cmd := exec.Command("clear") // comando para sistema Unix
         cmd.Stdout = os.Stdout
         cmd.Run()
     }
     clear["windows"] = func() {
-        cmd := exec.Command("cmd", "/c", "cls") //Windows example, its tested 
+        cmd := exec.Command("cmd", "/c", "cls") // comando para o windows
         cmd.Stdout = os.Stdout
         cmd.Run()
     }
@@ -100,7 +100,7 @@ func (calc calcular) multiplica(resposta int) int{
 func (calc calcular) jogar(){
 
 	for true{
-		CallClear()
+		CallClear() //limpar a tela para o jogo começar
 		
 		// Nesse ponto, é gerado 2 números aleatorios
 		calc.valor1 = rand.Intn(1001) //Gera um número de 0 a 1000
