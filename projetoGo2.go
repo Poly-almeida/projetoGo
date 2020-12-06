@@ -5,17 +5,18 @@ import (
 	"os"
 	"os/exec"
 	"runtime"
+	"time"
 )
 // definição da estrutura do jogo
 type calcular struct{
 	valor1 int
 	valor2 int
 	operacao int
+	operacao_str string
 	resultado int
 	pontos int
 }
 var clear map[string]func() //create a map for storing clear funcs
-// função reponsável por executar o comando de limpar a tela de acordo com sistema operacional
 func init() {
     clear = make(map[string]func()) //Initialize it
     clear["linux"] = func() { 
@@ -39,111 +40,85 @@ func CallClear() {
     }
 }
 
-// Método que soma dois números e verifica se o resultado é correto
-func (calc calcular) soma(resposta int) int{
-	var resultado int
-	resultado = calc.valor1 + calc.valor2
-	calc.resultado = resultado
+func (calc *calcular) rodada() {
+	calc.operacao = rand.Intn(3) //Gera um número de 0 a 2
+	if calc.operacao == 0 { // Se o número gerado em calc.operacao for 0, uma soma arbtrária é mostrada na tela
+		fmt.Println("OP 0")
+		// valores para soma são da forma 10 * pontuação + 9 		
+		// 0pts => de 0 a 9		
+		// 1pts => de 10 a 19		
+		// 2pts => de 20 a 29 
+		// [...]		
+		var base int = 10 * calc.pontos
+		calc.valor1 = rand.Intn(base + 9) + base
+		calc.valor2 = rand.Intn(base + 9) + base
+		calc.resultado = calc.valor1 + calc.valor2
+		calc.operacao_str = " + "
 
-	var certo int 
-	if resposta == calc.resultado{
-		fmt.Println("Resposta correta")
-		certo = 1
-	} else {
-		fmt.Println("Resposta errada")
-		certo = 0
+	} else if calc.operacao == 1{ //Se o número gerado em calc.operacao for 1, uma subtração arbtrária é mostrada na tela
+		fmt.Println("OP 1")
+		// valores para subtração são da forma 10 * pontuação + 9 		
+		// 0pts => de 0 a 9		
+		// 1pts => de 10 a 19		
+		// 2pts => de 20 a 29 
+		// [...]		
+		var base int = 10 * calc.pontos
+		calc.valor1 = rand.Intn(base + 9) + base
+		calc.valor2 = rand.Intn(base + 9) + base
+
+		// evitar subtrações com resultado negativo
+		if calc.valor2 > calc.valor1 {
+			var temp int = calc.valor1;
+			calc.valor1 = calc.valor2;
+			calc.valor2 = temp;
+		}
+		calc.resultado = calc.valor1 - calc.valor2
+		calc.operacao_str = " - "
+
+	} else { //Se o número gerado em calc.operacao for 2, uma multiplicação arbtrária é mostrada na tela
+		// valores para multiplicação são da forma 3 * pontuação + 2 		
+		// 0pts => de 0 a 2		
+		// 1pts => de 3 a 5		
+		// 2pts => de 6 a 8 
+		// [...]		
+		fmt.Println("OP 2")
+		var base int = 3 * calc.pontos
+		calc.valor1 = rand.Intn(base + 2) + base
+		calc.valor2 = rand.Intn(base + 2) + base
+		calc.resultado = calc.valor1 * calc.valor2
+		calc.operacao_str = " * "
 	}
-
-	fmt.Println(calc.valor1, " + ", calc.valor2, " = ", calc.resultado)
-
-	return certo
 }
-// Método que subtrai dois números e verifica se o resultado é correto
-func (calc calcular) subtrai(resposta int) int{
-	var resultado int
-	resultado = calc.valor1 - calc.valor2
-	calc.resultado = resultado
 
-	var certo int 
-	if resposta == calc.resultado{
-		fmt.Println("Resposta correta")
-		certo = 1
-	} else {
-		fmt.Println("Resposta errada")
-		certo = 0
-	}
+func (calc *calcular) finalizar() {
 
-	fmt.Println(calc.valor1, " - ", calc.valor2, " = ", calc.resultado)
-
-	return certo
 }
-// Método que multiplica dois números e verifica se o resultado é correto
-func (calc calcular) multiplica(resposta int) int{
-	var resultado int
-	resultado = calc.valor1 * calc.valor2
-	calc.resultado = resultado
 
-	var certo int 
-	if resposta == calc.resultado{
-		fmt.Println("Resposta correta")
-		certo = 1
-	} else {
-		fmt.Println("Resposta errada")
-		certo = 0
-	}
-
-	fmt.Println(calc.valor1, " * ", calc.valor2, " = ", calc.resultado)
-
-	return certo
-}
 // Método principal do jogo
 func (calc calcular) jogar(){
-
+	rand.Seed(time.Now().UnixNano())
+	calc.pontos = 0
 	for true{
 		CallClear() //limpar a tela para o jogo começar
 		
-		// Nesse ponto, é gerado 2 números aleatorios
-		calc.valor1 = rand.Intn(1001) //Gera um número de 0 a 1000
-		calc.valor2 = rand.Intn(1001)
-
-		calc.operacao = rand.Intn(3) //Gera um número de 0 a 2
+		calc.rodada()
 		var resposta int
+		fmt.Println("Operação atual:  ", calc.operacao)
+		fmt.Println("Você tem ", calc.pontos," ponto(s).")
 		fmt.Println("Informe o resultado para a seguinte operação:")
-
-		if calc.operacao == 0{ //Se o número gerado em calc.operacao for 0, uma soma arbtrária é mostrada na tela
-			fmt.Println("Você tem ",calc.pontos," ponto(s).")
-			fmt.Print(calc.valor1, " + ", calc.valor2, " = ")
-			fmt.Scanln(&resposta)
-
-			if calc.soma(resposta) == 1{ // Aqui o método soma() verifica se a resposta dada é correta
-				calc.pontos = calc.pontos + 1 // Atribui 1 ponto se a resposta for correta
-				fmt.Println("Você tem ",calc.pontos," ponto(s).")
-			}
-		} else if calc.operacao == 1{ //Se o número gerado em calc.operacao for 1, uma subtração arbtrária é mostrada na tela
-			fmt.Println("Você tem ",calc.pontos," ponto(s).")
-			fmt.Print(calc.valor1, " - ", calc.valor2, " = ")
-			fmt.Scanln(&resposta)
-
-			if calc.subtrai(resposta) == 1{ // Aqui o método subtrai() verifica se a resposta dada é correta
-				calc.pontos = calc.pontos + 1
-				fmt.Println("Você tem ",calc.pontos," ponto(s).")
-			}
-		} else { //Se o número gerado em calc.operacao for 2, uma multiplicação arbtrária é mostrada na tela
-			fmt.Println("Você tem ",calc.pontos," ponto(s).")
-			fmt.Print(calc.valor1, " * ", calc.valor2, " = ")
-			fmt.Scanln(&resposta)
-
-			if calc.multiplica(resposta) == 1{ // Aqui o método multiplica() verifica se a resposta dada é correta
-				calc.pontos = calc.pontos + 1
-				fmt.Println("Você tem ",calc.pontos," ponto(s).")
-			}
+		fmt.Print(calc.valor1, calc.operacao_str, calc.valor2, " = ")
+		fmt.Scanln(&resposta)
+		
+		if resposta == calc.resultado {
+			calc.pontos += 1
+		} else {
+			calc.finalizar()
 		}
 
 		if calc.pontos == 10{
 			fmt.Println("Parabéns! Vc venceu!")
 			break
 		}
-
 	}
 }
 
