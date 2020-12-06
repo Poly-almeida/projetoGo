@@ -93,12 +93,34 @@ Por fim uma IDE que é paga, que ajuda na elaboração do codigo é a da jetbrai
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-No arquivo clienteTCP para execuatr com o comando =  go run -race clienteTCP.go
+ProjetoGo - “Jogo Númerico”
 
-No arquivo serverUDO para execuatr com o comando =  go run -race serverUDP.go
+O seguinte projeto, que está no repositório abaixo: 
+    https://github.com/Poly-almeida/projetoGo.git
+Foi elaborado, para demonstrar os conceitos de linguagem de programação, no que tange o paralelismo, que é um dos paradigmas da linguagem de programação. Bom, dessa maneira, projetoGo que simula um jogo númerico simples mais com funcionalidades que permite, ser jogado por mais de um jogador, além de poder se conectar ao servidor, neste caso, foi elaborado o código que simula um servidor, que o arquivo “gameServer.go”, e temos o jogo em sim, no código “gameClient.go” que se conecta ao ao primeiro arquivo citado. 
 
-Para testar, usar o comando telnet 0.0.0.0 9999
+O jogo em si, baseia se em conectar ao servidor, uma uma vez estabelecida a conexão através da função abaixo:
+func (manager *GameManager) connect()
+Sendo, que a conexão, se dá via protocolo TCP, usando a porta 3333 [ localhost:3333 ]
+Uma vez estabelecida conexão, o jogador, terá que se identificar atraves de login e senha, no tipo ( type ), que a linguagem Goolang permirte ser implementada, segue abaixo a implementação:
 
-OBS: Para verificar as conexões ativas usar o comando = netstat -anp TCP
+    type User struct {
+    username string
+    password string
+    status int
+    }
+
+Ressalto que o jogo através do tipo (type) “GameManager“, se tem a ligação de outras funções e métodos no jogo.
+
+    type GameManager struct {
+    conn net.Conn
+    status int
+    data *GameData
+    }
+
+O jogo demonstra que o uso das funções, métodos, e tipo que a lingam Go implementa, são fáceis de serem elaboradas, o que mostra o potencial da linguagem, como, analisando, de forma técnica, que a linguagem GO, foi desenvolvida com usando os paradigmas da Linguagem de programação, que visam, o uso adequado do desenvolvimento de qualquer linguagem de programação.
+
+Após passarmos as informações do 1 código ( gameCliente.go)  que é o jogo, temos o 2 código, que é justamente o servidor ( gameServer.go). O servidor que foi elaborado, permite que mais de 1 jogador se conecte a ele e com isso permite o uso de vários clientes.
+
 
 
