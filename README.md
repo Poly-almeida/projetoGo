@@ -96,20 +96,21 @@ Por fim uma IDE que é paga, que ajuda na elaboração do codigo é a da jetbrai
 ProjetoGo - “Jogo Númerico”
 
 O seguinte projeto, que está no repositório abaixo: 
+
     https://github.com/Poly-almeida/projetoGo.git
+
 Foi elaborado, para demonstrar os conceitos de linguagem de programação, no que tange o paralelismo, que é um dos paradigmas da linguagem de programação. Bom, dessa maneira, projetoGo que simula um jogo númerico simples mais com funcionalidades que permite, ser jogado por mais de um jogador, além de poder se conectar ao servidor, neste caso, foi elaborado o código que simula um servidor, que o arquivo “gameServer.go”, e temos o jogo em sim, no código “gameClient.go” que se conecta ao ao primeiro arquivo citado. 
 
 O jogo em si, baseia se em conectar ao servidor, uma uma vez estabelecida a conexão através da função abaixo:
 func (manager *GameManager) connect()
 Sendo, que a conexão, se dá via protocolo TCP, usando a porta 3333 [ localhost:3333 ]
-Uma vez estabelecida conexão, o jogador, terá que se identificar atraves de login e senha, no tipo ( type ), que a linguagem Goolang permirte ser implementada, segue abaixo a implementação:
+Uma vez estabelecida conexão, o jogador, terá que se identificar através de login e senha, no tipo ( type ), que a linguagem Goolang permite ser implementada, segue abaixo a implementação:
 
     type User struct {
     username string
     password string
     status int
     }
-
 Ressalto que o jogo através do tipo (type) “GameManager“, se tem a ligação de outras funções e métodos no jogo.
 
     type GameManager struct {
@@ -120,7 +121,51 @@ Ressalto que o jogo através do tipo (type) “GameManager“, se tem a ligaçã
 
 O jogo demonstra que o uso das funções, métodos, e tipo que a lingam Go implementa, são fáceis de serem elaboradas, o que mostra o potencial da linguagem, como, analisando, de forma técnica, que a linguagem GO, foi desenvolvida com usando os paradigmas da Linguagem de programação, que visam, o uso adequado do desenvolvimento de qualquer linguagem de programação.
 
-Após passarmos as informações do 1 código ( gameCliente.go)  que é o jogo, temos o 2 código, que é justamente o servidor ( gameServer.go). O servidor que foi elaborado, permite que mais de 1 jogador se conecte a ele e com isso permite o uso de vários clientes.
+Após passarmos as informações do 1 código ( gameCliente.go)  que é o jogo, temos o 2 código (gameServer.go), que é justamente o servidor ( gameServer.go). O servidor que foi elaborado, permite que mais de 1 jogador se conecte a ele e com isso permite o uso de vários clientes.
+
+O gameServer.go, tem como base principal o tipo (type) “ServerGameData”, que podemos ver abaixo:
+
+     type ServerGameData struct {
+        round int
+        max int
+        op int
+        val1 int
+        val2 int
+        res int
+      }
+      
+Sendo assim, permite que seja informado o servidor que as funções round, max, op, val1, val2 e res possam atuar junto com as funções (func) start, finish, rextRound, verify além da handleConnection que a função que permite a conexão de fora, ou seja os clientes que serão verificados com seu usuário e senha, poderão jogar, saber sua pontuação, começar o jogo, finalizar.
+
+O código (gameServer.go), utiliza na função main (func main() ), uma verificação se o servidor conseguiu estabelecer a conexão (no o teste foi local [utilizando o próprio computador numa conexão local ou localhost] ),  havendo conexão ou o servidor estabelecendo conexão temos a seguinte linha de código: 
+
+    ln, err := net.Listen("tcp", "127.0.0.1:3333"
+
+Se houver erro, temos a nossa condição abaixo:
+   
+    if err != nil {
+         log.Fatal(err)
+     }
+
+Uma vez estabelecida a conexão do servidor ou servidor estar ativo, temos o retorno com a mensagem a abaixo de “SERVER STARTED SUCCESSFULLY” ou Servidor iniciado com sucesso”:
+
+    fmt.Println("----- SERVER STARTED SUCCESSFULLY -----")
+    for {
+        conn, err := ln.Accept()
+        if err != nil {
+            log.Fatal(err)
+        }
+        
+Para cada cliente conectado ao servidor, temos através da função “handleConnection”, a mensagem “NEW CLIENT CONNECTED” ou “Novo Cliente Conectado” :
+
+    fmt.Println(" >> ----- NEW CLIENT CONNECTED -----")
+        go handleConnection(conn)
+    }
+
+
+
+        
+
+
 
 
 
