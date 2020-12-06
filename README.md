@@ -161,11 +161,29 @@ Para cada cliente conectado ao servidor, temos através da função “handleCon
         go handleConnection(conn)
     }
 
+-----------------------------------------------------------Copilando o programa---------------------------------------------------------------------------------
+
+Passo 1 = abra o cmd (windows), se for Linux ou MaxOS (terminal)
+
+Passo 2 =Utilize o comando => e digite “ go “
+
+    go <comando> [argumento]  //(essa é a estrutura para se rodar um programa em go) 
+
+    go run gameServer.go      //(Primeiro se roda o código do servidor)
+
+    go run gameCliente.go     //(Uma vez que o servidor está rodando, roda o segundo código)
+
+Para finalizar a compilação do programa (seja cliente ou servidor ), 
+no teclado, 
+digite CRTL +C ou CTRL + Z
 
 
-        
+------------------------------------------Referências para a produção do programa:------------------------------------------------------------------------------
 
+https://golang.org/doc/   (pagina oficial com toda a documentação da linguagem)
 
+https://golang.org/pkg/   (pagina oficial da linguagem GO, explicando os packages e sua biblioteca)
 
+https://golang.org/doc/cmd (pagina oficial da linguagem GO, exlicando a documentação dos comandos)
 
-
+https://golang.org/ref/spec  (pagina oficial da linguagem GO, especificando a última versão da linguagem Go, no seu última versão de lançada em 14/01/2020)
