@@ -161,7 +161,7 @@ Para cada cliente conectado ao servidor, temos através da função “handleCon
         go handleConnection(conn)
     }
 
------------------------------------------------------------Copilando o programa---------------------------------------------------------------------------------
+-----------------------------------------------------------Copilando o programa-----------------------------------------
 
 Passo 1 = abra o cmd (windows), se for Linux ou MaxOS (terminal)
 
@@ -177,8 +177,7 @@ Para finalizar a compilação do programa (seja cliente ou servidor ),
 no teclado, 
 digite CRTL +C ou CTRL + Z
 
-
-------------------------------------------Referências para a produção do programa:------------------------------------------------------------------------------
+------------------------------------------Referências para a produção do programa:--------------------------------------
 
 https://golang.org/doc/   (pagina oficial com toda a documentação da linguagem)
 
